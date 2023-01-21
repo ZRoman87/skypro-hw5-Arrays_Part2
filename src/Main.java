@@ -49,8 +49,15 @@ public class Main {
         System.out.println("ЗАДАЧА №2");
 
         int[] arr = generateRandomArray();
-        int minCost = arr[0];
-        int maxCost = arr[0];
+        // Инициализация переменных minCost и maxCost одним из элементов массива не совсем удачна, т.к.
+        // в случае если массив будет пустым/нулевым, приведет к сбою в программе.
+        // Лучше использовать для инициализации этих переменных значения Integer.MAX_VALUE и Integer.MIN_VALUE
+//        int minCost = arr[0];
+//        int maxCost = arr[0];
+
+        int minCost = Integer.MAX_VALUE ;
+        int maxCost = Integer.MIN_VALUE;
+
 
         for (int current : arr) {
             if (current < minCost) {
@@ -83,11 +90,12 @@ public class Main {
         int sum = 0;
 
         for (int element : arr) sum += element;
-        double averageCost = sum / arr.length;
+        double averageCost = (double)sum / arr.length;
 
 //        System.out.println(sum);
 
-        System.out.println("Средняя сумма трат за месяц составила " + averageCost + " рублей");
+//        System.out.println("Средняя сумма трат за месяц составила " + averageCost + " рублей");
+        System.out.printf("Средняя сумма трат за месяц составила %.2f рублей %n ", averageCost);
         System.out.println();
 
     }
@@ -107,6 +115,13 @@ public class Main {
         int arrayL = reverseFullName.length;
         char c;
 
+        // Solution #1
+        for (int i = arrayL-1; i >= 0; i--) {
+            System.out.print(reverseFullName[i]);
+        }
+        System.out.println();
+
+        // Solution #2
         for (int i = 0; i <= (arrayL - 1) / 2; i++)
             {
                 c = reverseFullName[i];
